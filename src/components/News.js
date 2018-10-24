@@ -1,31 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import pic from '../assests/images/1.jpg'
 
-class News extends Component {
-    
-    constructor (props) {
-        //父子组件传值
+class News extends React.Component{
+
+    constructor(props) {
         super(props);
 
-        //define data
         this.state = {
-            userinfo:'zhangsan'
+            msg:'news',
         }
     }
 
-    render() {
+    render(){
         return(
             <div>
-                <h2>{this.state.userinfo}</h2>
-                <ul>
-                    <li>this is a list</li>
-                    <li>this is a list</li>
-                    <li>this is a list</li>
-                    <li>this is a list</li>
-                </ul>
+                {this.state.msg}
+                <img src={pic} alt=""></img>
+                <img src={ require("../assests/images/1.jpg")} alt=""></img>
+                
             </div>
-        );
+        )
     }
-
 }
 
 export default News;
