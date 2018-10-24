@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Home extends Component{
+import '../assests/css/index.css'
 
-    constructor() {
+class Home extends React.Component {
 
-        super();
-        
-        //define data
+    constructor(props) {
+        super(props);
+
         this.state = {
-            name:'Kat',
-            age:'40',
-            userinfo:{
-                username:"itying"
-            }
-        } 
+            msg : 'I am a Home',
+            title: 'I am a component',
+            color: 'red'
+        }
     }
 
-    render(){
-        return (
+    render() {
+        return(
             <div>
-                <p>name:{this.state.name}</p>
-                <p>age:{this.state.age}</p>
-                <p>userinfo:{this.state.userinfo.username}</p>
+                <h2>{this.state.msg}</h2>
+                <div title={this.state.title}>I am a div </div>
+                <div className={this.state.color}>I am a red div </div>            
             </div>
-        );
+        )
     }
 }
 
