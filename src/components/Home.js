@@ -1,28 +1,35 @@
 import React from 'react';
 
-import '../assests/css/index.css'
-
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            msg : 'I am a Home',
-            title: 'I am a component',
-            color: 'red'
+            msg:"cc"
         }
+
+        //this.getMsg = this.getMsg.bind(this);
+    }
+
+    run(){
+        alert("I am a fun function");
+    }
+ 
+    getData(){
+        alert(this.state.msg);
+    }
+
+    getMsg=()=>{
+        alert(this.state.msg);
     }
 
     render() {
         return(
             <div>
-                <h2>{this.state.msg}</h2>
-                <div title={this.state.title}>I am a div </div>
-                <div className={this.state.color}>I am a red div </div> 
-                <br/>
-                <label htmlFor="name">name</label>         
-                <input id="name"/>  
+                <button onClick={this.run}>Run function</button>
+                <button onClick={this.getData.bind(this)}>Get data</button>
+                <button onClick={this.getMsg}>Get msg</button>
             </div>
         )
     }
