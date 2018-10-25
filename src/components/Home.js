@@ -6,41 +6,38 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            msg:"cc"
+            msg:'I am a home component',
+            username:'normal username'
         }
-
-        //this.getMsg = this.getMsg.bind(this);
     }
 
-    run(){
-        alert("I am a fun function");
-    }
- 
-    getData(){
-        alert(this.state.msg);
-    }
-
-    getMsg=()=>{
-        alert(this.state.msg);
+    run = (event)=>{
+        // alert(this.state.msg);
+        // console.log(event);
+        alert(event.target);
+        event.target.style.background='red';
     }
 
-    setMsg = (newMsg)=>{
+    inputChanged = (event)=>{
         this.setState({
-            msg:newMsg
-        })
+            username : event.target.value
+        });
     }
 
     render() {
         return(
             <div>
-                <h2>{this.state.msg}</h2>
-                <button onClick={this.run}>Run function</button>
-                <button onClick={this.getData.bind(this)}>Get data</button>
-                <button onClick={this.getMsg}>Get msg</button>
-                <button onClick={this.setMsg.bind(this,'nnn')}>Set msg</button>
+                {this.state.msg}
+                <br/>
+                {this.state.username}
+                <button onClick ={this.run}>event object</button>
+                <br/>
+                <input onChange={this.inputChanged}/>
+                <button>get data in input</button>
             </div>
         )
     }
+
 }
 
 export default Home;
