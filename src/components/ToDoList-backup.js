@@ -1,12 +1,27 @@
 import React, { Component } from "react";
 
-import storage from '../model/storage'
-
 class ToDoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
+      list: [
+        {
+          title: "录制ionic",
+          checked: true
+        },
+        {
+          title: "录制nodejs",
+          checked: false
+        },
+        {
+          title: "录制egg.js",
+          checked: true
+        },
+        {
+          title: "录制vue",
+          checked: false
+        }
+      ]
     };
   }
 
@@ -24,7 +39,7 @@ class ToDoList extends Component {
       });
 
       //store data
-      storage.set('todolist',this.state.list);
+      localStorage.setItem('todolist',JSON.stringify(this.state.list));
     }
   };
 
@@ -35,7 +50,7 @@ class ToDoList extends Component {
       list: tempList
     });
     //store data
-    storage.set('todolist',this.state.list)
+    localStorage.setItem('todolist',JSON.stringify(this.state.list));
   };
 
   checkboxChange = key => {
@@ -45,13 +60,13 @@ class ToDoList extends Component {
       list: tempList
     });
     //store data
-    storage.set('todolist',this.state.list)
+    localStorage.setItem('todolist',JSON.stringify(this.state.list));
   };
 
   //页面加载就会触发
   componentDidMount(){
     //获取缓存数据
-    let templist = storage.get("todolist");
+    let templist = JSON.parse(localStorage.getItem('todolist'));
     if(templist){
         this.setState({
             list:templist
