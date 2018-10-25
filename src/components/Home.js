@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './Header'
 import Axios from './Axios'
+import FetchJsonp from './FetchJsonp'
 
 class Home extends React.Component {
 
@@ -21,6 +22,7 @@ class Home extends React.Component {
         return (
           <div>        
             <Axios />
+            <FetchJsonp></FetchJsonp>
           </div>
         );
       }
