@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Header'
+import Axios from './Axios'
 
 class Home extends React.Component {
 
@@ -19,12 +20,7 @@ class Home extends React.Component {
     render() {
         return (
           <div>        
-            
-  
-              <Header title={this.state.title} />
-              这是首页组件的内容
-              
-                
+            <Axios />
           </div>
         );
       }
