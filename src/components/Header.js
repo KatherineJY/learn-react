@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import PropTypes from 'prop-types'
+
 class Header extends Component {
 
     constructor(props) {
@@ -15,10 +17,17 @@ class Header extends Component {
             <div>
                 <h2>from Father:{this.props.title}</h2>
                 This is a header component
-                <button onClick={this.props.news.getChildData.bind(this,'from child')}>send data to father</button>
-            </div>
+             </div>
         );
     }
+}
+
+Header.defaultProps = {
+    title:'title'
+}
+
+Header.PropTypes = {
+    title:PropTypes.string
 }
 
 export default Header;

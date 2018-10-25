@@ -21,7 +21,7 @@ class Home extends React.Component {
           <div>        
             
   
-              <Header title={this.state.title} news={this} />
+              <Header title={this.state.title} />
               这是首页组件的内容
               
                 
