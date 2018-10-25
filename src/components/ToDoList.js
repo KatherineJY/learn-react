@@ -25,17 +25,22 @@ class ToDoList extends Component {
     };
   }
 
-  addData = () => {
+  addData = (e) => {
     //alert(this.refs.title.value);
-    let tempList = this.state.list;
-    tempList.push({
-      title: this.refs.title.value,
-      checked: false
-    });
-    this.refs.title.value = "";
-    this.setState({
-      list: tempList
-    });
+    if (e.keyCode == 13) {
+      let tempList = this.state.list;
+      tempList.push({
+        title: this.refs.title.value,
+        checked: false
+      });
+      this.refs.title.value = "";
+      this.setState({
+        list: tempList
+      });
+
+      //store data
+      localStorage.setItem('todolist',JSON.stringify(this.state.list));
+    }
   };
 
   deleteData = key => {
@@ -44,22 +49,37 @@ class ToDoList extends Component {
     this.setState({
       list: tempList
     });
+    //store data
+    localStorage.setItem('todolist',JSON.stringify(this.state.list));
   };
 
-  checkboxChange = (key) => {
-      let tempList = this.state.list;
-      tempList[key].checked = !tempList[key].checked;
-      this.setState({
-          list:tempList
-      })
+  checkboxChange = key => {
+    let tempList = this.state.list;
+    tempList[key].checked = !tempList[key].checked;
+    this.setState({
+      list: tempList
+    });
+    //store data
+    localStorage.setItem('todolist',JSON.stringify(this.state.list));
+  };
+
+  //页面加载就会触发
+  componentDidMount(){
+    //获取缓存数据
+    let templist = JSON.parse(localStorage.getItem('todolist'));
+    if(templist){
+        this.setState({
+            list:templist
+        })
+    }
+
   }
 
   render() {
     return (
       <div>
         <h2>Todolist</h2>
-        <input ref="title" />
-        <button onClick={this.addData}>Add</button>
+        <input ref="title" onKeyUp={this.addData} />
         <br />
         To Do
         <ul>
