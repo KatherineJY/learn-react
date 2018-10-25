@@ -1,42 +1,33 @@
 import React from 'react';
 
+import Header from './Header'
+
 class Home extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            msg:'I am a home component',
-            username:'normal username'
+    constructor(props){
+        super(props);        
+        this.state={
+          msg:'我是一个首页组件',
+          title:'首页组件'
         }
     }
 
-    run = (event)=>{
-        // alert(this.state.msg);
-        // console.log(event);
-        alert(event.target);
-        event.target.style.background='red';
-    }
-
-    inputChanged = (event)=>{
-        this.setState({
-            username : event.target.value
-        });
+    getChildData = (result) => {
+        alert(result);
     }
 
     render() {
-        return(
-            <div>
-                {this.state.msg}
-                <br/>
-                {this.state.username}
-                <button onClick ={this.run}>event object</button>
-                <br/>
-                <input onChange={this.inputChanged}/>
-                <button>get data in input</button>
-            </div>
-        )
-    }
+        return (
+          <div>        
+            
+  
+              <Header title={this.state.title} news={this} />
+              这是首页组件的内容
+              
+                
+          </div>
+        );
+      }
 
 }
 
